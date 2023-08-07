@@ -1,0 +1,2253 @@
+   Compiling otlp-tempo-dump v0.1.0 (/Users/bugenzhao/Developer/otlp-tempo-dump)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.90s
+     Running `target/debug/otlp-tempo-dump`
+Span {
+    trace_id: [
+        194,
+        179,
+        19,
+        104,
+        46,
+        185,
+        51,
+        170,
+        61,
+        97,
+        240,
+        125,
+        101,
+        131,
+        100,
+        189,
+    ],
+    span_id: [
+        129,
+        134,
+        132,
+        216,
+        47,
+        27,
+        251,
+        208,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861137728765952",
+    kind: Internal,
+    start_time_unix_nano: 1691410275207872000,
+    end_time_unix_nano: 1691410276214101000,
+    attributes: [
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            1000211958,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            5,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861137728765952",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            31083,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410276208091000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861137794301952",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
+Span {
+    trace_id: [
+        135,
+        80,
+        174,
+        5,
+        47,
+        122,
+        16,
+        165,
+        213,
+        207,
+        207,
+        123,
+        63,
+        31,
+        165,
+        132,
+    ],
+    span_id: [
+        17,
+        41,
+        225,
+        146,
+        53,
+        138,
+        193,
+        69,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861137794301952",
+    kind: Internal,
+    start_time_unix_nano: 1691410276208044000,
+    end_time_unix_nano: 1691410277211817000,
+    attributes: [
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            1000627208,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            10,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            26750,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861137794301952",
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410277208680000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861137859903488",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
+Span {
+    trace_id: [
+        220,
+        164,
+        137,
+        247,
+        193,
+        5,
+        24,
+        191,
+        173,
+        110,
+        136,
+        126,
+        139,
+        26,
+        55,
+        64,
+    ],
+    span_id: [
+        123,
+        32,
+        211,
+        61,
+        68,
+        214,
+        24,
+        13,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861137859903488",
+    kind: Internal,
+    start_time_unix_nano: 1691410277208614000,
+    end_time_unix_nano: 1691410278210682000,
+    attributes: [
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            10,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861137859903488",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            27125,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            999568167,
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410278208189000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861137925439488",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
+Span {
+    trace_id: [
+        198,
+        126,
+        156,
+        143,
+        95,
+        217,
+        212,
+        169,
+        92,
+        239,
+        49,
+        19,
+        104,
+        85,
+        228,
+        150,
+    ],
+    span_id: [
+        103,
+        193,
+        142,
+        205,
+        110,
+        115,
+        62,
+        169,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861137925439488",
+    kind: Internal,
+    start_time_unix_nano: 1691410278208137000,
+    end_time_unix_nano: 1691410279212751000,
+    attributes: [
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            34416,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861137925439488",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            1000744125,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            7,
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410279208894000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861137990975488",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
+Span {
+    trace_id: [
+        122,
+        22,
+        251,
+        67,
+        112,
+        130,
+        209,
+        76,
+        63,
+        141,
+        109,
+        216,
+        145,
+        206,
+        204,
+        239,
+    ],
+    span_id: [
+        231,
+        238,
+        92,
+        212,
+        183,
+        175,
+        172,
+        247,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861137990975488",
+    kind: Internal,
+    start_time_unix_nano: 1691410279208767000,
+    end_time_unix_nano: 1691410280209782000,
+    attributes: [
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            998408458,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861137990975488",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            10,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            28459,
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410280207184000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861138056445952",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
+Span {
+    trace_id: [
+        89,
+        128,
+        71,
+        56,
+        149,
+        91,
+        154,
+        1,
+        14,
+        181,
+        215,
+        221,
+        129,
+        137,
+        177,
+        85,
+    ],
+    span_id: [
+        27,
+        122,
+        129,
+        67,
+        168,
+        158,
+        62,
+        196,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861138056445952",
+    kind: Internal,
+    start_time_unix_nano: 1691410280207097000,
+    end_time_unix_nano: 1691410281210386000,
+    attributes: [
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            29000,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            7,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            1000067917,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861138056445952",
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410281207176000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861138121981952",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
+Span {
+    trace_id: [
+        28,
+        35,
+        41,
+        244,
+        60,
+        0,
+        207,
+        41,
+        86,
+        81,
+        31,
+        35,
+        215,
+        194,
+        91,
+        61,
+    ],
+    span_id: [
+        189,
+        39,
+        171,
+        59,
+        6,
+        52,
+        13,
+        96,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861138121981952",
+    kind: Internal,
+    start_time_unix_nano: 1691410281207085000,
+    end_time_unix_nano: 1691410282210954000,
+    attributes: [
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            10,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861138121981952",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            1001165292,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            97042,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410282208259000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861138187583488",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
+Span {
+    trace_id: [
+        15,
+        99,
+        132,
+        11,
+        180,
+        53,
+        98,
+        175,
+        70,
+        158,
+        137,
+        142,
+        24,
+        116,
+        204,
+        244,
+    ],
+    span_id: [
+        60,
+        12,
+        8,
+        10,
+        181,
+        223,
+        59,
+        149,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861138187583488",
+    kind: Internal,
+    start_time_unix_nano: 1691410282208168000,
+    end_time_unix_nano: 1691410283210555000,
+    attributes: [
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            7,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            25333,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861138187583488",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            999847042,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410283208023000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861138253053952",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
+Span {
+    trace_id: [
+        16,
+        17,
+        171,
+        89,
+        90,
+        40,
+        246,
+        252,
+        80,
+        103,
+        184,
+        129,
+        22,
+        12,
+        203,
+        165,
+    ],
+    span_id: [
+        147,
+        228,
+        240,
+        88,
+        235,
+        206,
+        245,
+        231,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861138253053952",
+    kind: Internal,
+    start_time_unix_nano: 1691410283207944000,
+    end_time_unix_nano: 1691410284211096000,
+    attributes: [
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            32833,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            999869250,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861138253053952",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            5,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410284207826000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861138318589952",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
+Span {
+    trace_id: [
+        44,
+        32,
+        233,
+        144,
+        67,
+        201,
+        104,
+        159,
+        16,
+        165,
+        183,
+        213,
+        58,
+        100,
+        175,
+        39,
+    ],
+    span_id: [
+        183,
+        82,
+        11,
+        124,
+        177,
+        176,
+        51,
+        150,
+    ],
+    trace_state: "",
+    parent_span_id: [],
+    name: "Epoch 4861138318589952",
+    kind: Internal,
+    start_time_unix_nano: 1691410284207757000,
+    end_time_unix_nano: 1691410285211297000,
+    attributes: [
+        KeyValue {
+            key: "thread.id",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            10,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.lineno",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            36,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.namespace",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave_meta::barrier::trace",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "code.filepath",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "src/meta/src/barrier/trace.rs",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "thread.name",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "risingwave-main",
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "idle_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            999966125,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "busy_ns",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        IntValue(
+                            28583,
+                        ),
+                    ),
+                },
+            ),
+        },
+        KeyValue {
+            key: "epoch",
+            value: Some(
+                AnyValue {
+                    value: Some(
+                        StringValue(
+                            "4861138318589952",
+                        ),
+                    ),
+                },
+            ),
+        },
+    ],
+    dropped_attributes_count: 0,
+    events: [
+        Event {
+            time_unix_nano: 1691410285207732000,
+            name: "new barrier enqueued",
+            attributes: [
+                KeyValue {
+                    key: "level",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "INFO",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "target",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "rw_tracing",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "epoch",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "4861138384125952",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.filepath",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "src/meta/src/barrier/mod.rs",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.namespace",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                StringValue(
+                                    "risingwave_meta::barrier",
+                                ),
+                            ),
+                        },
+                    ),
+                },
+                KeyValue {
+                    key: "code.lineno",
+                    value: Some(
+                        AnyValue {
+                            value: Some(
+                                IntValue(
+                                    670,
+                                ),
+                            ),
+                        },
+                    ),
+                },
+            ],
+            dropped_attributes_count: 0,
+        },
+    ],
+    dropped_events_count: 0,
+    links: [],
+    dropped_links_count: 0,
+    status: Some(
+        Status {
+            message: "",
+            code: Unset,
+        },
+    ),
+}
