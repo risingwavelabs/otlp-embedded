@@ -88,7 +88,7 @@ impl Trace {
         }
     }
 
-    fn is_complete(&self) -> bool {
+    pub fn is_complete(&self) -> bool {
         !self.tree.is_empty()
             && self
                 .tree
@@ -96,11 +96,11 @@ impl Trace {
                 .all(|n| matches!(n.get(), ValueNode::Value(_)))
     }
 
-    fn to_tempo(&self) -> serde_json::Value {
+    pub fn to_tempo(&self) -> serde_json::Value {
         let entries = self
             .tree
             .iter()
-            .map(|node| node.get().to_owned())
+            .map(|node| node.get())
             .filter_map(|value| match value {
                 ValueNode::Placeholder => None,
                 ValueNode::Value(value) => Some(value),
@@ -185,13 +185,13 @@ impl TraceService for MyServer {
             state.apply(resource_spans);
         }
 
-        if let Some(completed) = state
-            .traces
-            .iter()
-            .find(|(_, trace)| trace.is_complete() && trace.tree.iter().count() > 5)
-        {
-            println!("{}", completed.1.to_tempo());
-        }
+        // if let Some(completed) = state
+        //     .traces
+        //     .iter()
+        //     .find(|(_, trace)| trace.is_complete() && trace.tree.iter().count() > 5)
+        // {
+        //     println!("{}", completed.1.to_tempo());
+        // }
 
         Ok(Response::new(ExportTraceServiceResponse {
             partial_success: None,
