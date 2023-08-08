@@ -133,6 +133,10 @@ impl State {
     }
 
     fn add_value(&mut self, value: Value) {
+        if self.traces.is_empty() {
+            println!("got first value!!!");
+        }
+
         self.traces
             .get_or_insert(value.span.trace_id.clone(), Default::default)
             .unwrap()
