@@ -40,10 +40,6 @@ impl Trace {
             return;
         }
 
-        if value.span.name.starts_with("Epoch") {
-            eprintln!("{:#?}", value.span);
-        }
-
         let parent_id = {
             let parent_span_id = value.span.parent_span_id.clone();
 
