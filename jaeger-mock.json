@@ -1,0 +1,598 @@
+{
+    "data": [
+        {
+            "processes": {
+                "Bugens-MacBook-Pro.local-83588": {
+                    "key": "Bugens-MacBook-Pro.local-83588",
+                    "serviceName": "meta-Bugens-MacBook-Pro.local-83588",
+                    "tags": [
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "Bugens-MacBook-Pro.local-83588"
+                        },
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "1.5.0-alpha"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "string",
+                            "value": "83588"
+                        },
+                        {
+                            "key": "service.name",
+                            "type": "string",
+                            "value": "meta-Bugens-MacBook-Pro.local-83588"
+                        }
+                    ]
+                },
+                "Bugens-MacBook-Pro.local-83918": {
+                    "key": "Bugens-MacBook-Pro.local-83918",
+                    "serviceName": "compute-Bugens-MacBook-Pro.local-83918",
+                    "tags": [
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "1.5.0-alpha"
+                        },
+                        {
+                            "key": "service.name",
+                            "type": "string",
+                            "value": "compute-Bugens-MacBook-Pro.local-83918"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "string",
+                            "value": "83918"
+                        },
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "Bugens-MacBook-Pro.local-83918"
+                        }
+                    ]
+                },
+                "Bugens-MacBook-Pro.local-83931": {
+                    "key": "Bugens-MacBook-Pro.local-83931",
+                    "serviceName": "frontend-Bugens-MacBook-Pro.local-83931",
+                    "tags": [
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "1.5.0-alpha"
+                        },
+                        {
+                            "key": "service.name",
+                            "type": "string",
+                            "value": "frontend-Bugens-MacBook-Pro.local-83931"
+                        },
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "Bugens-MacBook-Pro.local-83931"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "string",
+                            "value": "83931"
+                        }
+                    ]
+                }
+            },
+            "spans": [
+                {
+                    "duration": 917,
+                    "logs": [],
+                    "operationName": "/stream_service.StreamService/InjectBarrier",
+                    "processID": "Bugens-MacBook-Pro.local-83918",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "spanID": "41ac30ae5c217f44",
+                            "traceID": "95f3e68af60a5ed3a587831795c1a69d"
+                        }
+                    ],
+                    "spanID": "18d8d1d1acb5d59e",
+                    "startTime": 1703158086360115,
+                    "tags": [
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 9
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 76
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/common/common_service/src/tracing.rs"
+                        },
+                        {
+                            "key": "uri",
+                            "type": "string",
+                            "value": "http://127.0.0.1:5688/stream_service.StreamService/InjectBarrier"
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 124125
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_common_service::tracing"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 770834
+                        }
+                    ],
+                    "traceID": "95f3e68af60a5ed3a587831795c1a69d",
+                    "warnings": null
+                },
+                {
+                    "duration": 505,
+                    "logs": [
+                        {
+                            "fields": [
+                                {
+                                    "key": "level",
+                                    "type": "string",
+                                    "value": "DEBUG"
+                                },
+                                {
+                                    "key": "target",
+                                    "type": "string",
+                                    "value": "risingwave_stream::task::stream_manager"
+                                },
+                                {
+                                    "key": "actors",
+                                    "type": "string",
+                                    "value": "[9, 10, 11, 12, 13, 14, 15, 16]"
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "type": "string",
+                                    "value": "src/stream/src/task/stream_manager.rs"
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "type": "string",
+                                    "value": "risingwave_stream::task::stream_manager"
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "type": "int64",
+                                    "value": 340
+                                },
+                                {
+                                    "key": "message",
+                                    "type": "string",
+                                    "value": "drop actors"
+                                }
+                            ],
+                            "timestamp": 1703158086367634
+                        }
+                    ],
+                    "operationName": "/stream_service.StreamService/DropActors",
+                    "processID": "Bugens-MacBook-Pro.local-83918",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "spanID": "41ac30ae5c217f44",
+                            "traceID": "95f3e68af60a5ed3a587831795c1a69d"
+                        }
+                    ],
+                    "spanID": "133b06232a6ea6fe",
+                    "startTime": 1703158086367240,
+                    "tags": [
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_common_service::tracing"
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "uri",
+                            "type": "string",
+                            "value": "http://127.0.0.1:5688/stream_service.StreamService/DropActors"
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 76
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 10
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 395958
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 94875
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/common/common_service/src/tracing.rs"
+                        }
+                    ],
+                    "traceID": "95f3e68af60a5ed3a587831795c1a69d",
+                    "warnings": null
+                },
+                {
+                    "duration": 227,
+                    "logs": [],
+                    "operationName": "meta_store_commit",
+                    "processID": "Bugens-MacBook-Pro.local-83588",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "spanID": "b4f82082dd0aa406",
+                            "traceID": "95f3e68af60a5ed3a587831795c1a69d"
+                        }
+                    ],
+                    "spanID": "18f68579026d61de",
+                    "startTime": 1703158086356250,
+                    "tags": [
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 1585
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 164792
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 12
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 46875
+                        },
+                        {
+                            "key": "manager",
+                            "type": "string",
+                            "value": "risingwave_meta::manager::catalog::CatalogManager"
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/meta/src/manager/catalog/mod.rs"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_meta::manager::catalog"
+                        }
+                    ],
+                    "traceID": "95f3e68af60a5ed3a587831795c1a69d",
+                    "warnings": null
+                },
+                {
+                    "duration": 12479,
+                    "logs": [],
+                    "operationName": "barrier",
+                    "processID": "Bugens-MacBook-Pro.local-83588",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "spanID": "b4f82082dd0aa406",
+                            "traceID": "95f3e68af60a5ed3a587831795c1a69d"
+                        }
+                    ],
+                    "spanID": "41ac30ae5c217f44",
+                    "startTime": 1703158086357177,
+                    "tags": [
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_meta::barrier::schedule"
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 8890918
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 3514207
+                        },
+                        {
+                            "key": "checkpoint",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 12
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/meta/src/barrier/schedule.rs"
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 116
+                        },
+                        {
+                            "key": "epoch",
+                            "type": "string",
+                            "value": "5631042280292352"
+                        }
+                    ],
+                    "traceID": "95f3e68af60a5ed3a587831795c1a69d",
+                    "warnings": null
+                },
+                {
+                    "duration": 15515,
+                    "logs": [],
+                    "operationName": "/ddl_service.DdlService/DropTable",
+                    "processID": "Bugens-MacBook-Pro.local-83588",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "spanID": "132162644d88a3fa",
+                            "traceID": "95f3e68af60a5ed3a587831795c1a69d"
+                        }
+                    ],
+                    "spanID": "b4f82082dd0aa406",
+                    "startTime": 1703158086354862,
+                    "tags": [
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/common/common_service/src/tracing.rs"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 12
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "uri",
+                            "type": "string",
+                            "value": "http://127.0.0.1:5690/ddl_service.DdlService/DropTable"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_common_service::tracing"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 3004208
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 12482167
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 76
+                        }
+                    ],
+                    "traceID": "95f3e68af60a5ed3a587831795c1a69d",
+                    "warnings": null
+                },
+                {
+                    "duration": 233,
+                    "logs": [],
+                    "operationName": "meta_store_commit",
+                    "processID": "Bugens-MacBook-Pro.local-83588",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "spanID": "41ac30ae5c217f44",
+                            "traceID": "95f3e68af60a5ed3a587831795c1a69d"
+                        }
+                    ],
+                    "spanID": "3d2f4612fd3dd255",
+                    "startTime": 1703158086368916,
+                    "tags": [
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 161625
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 671
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_meta::manager::catalog::fragment"
+                        },
+                        {
+                            "key": "manager",
+                            "type": "string",
+                            "value": "risingwave_meta::manager::catalog::fragment::FragmentManager"
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/meta/src/manager/catalog/fragment.rs"
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 51250
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 6
+                        }
+                    ],
+                    "traceID": "95f3e68af60a5ed3a587831795c1a69d",
+                    "warnings": null
+                },
+                {
+                    "duration": 19890,
+                    "logs": [
+                        {
+                            "fields": [
+                                {
+                                    "key": "level",
+                                    "type": "string",
+                                    "value": "INFO"
+                                },
+                                {
+                                    "key": "target",
+                                    "type": "string",
+                                    "value": "pgwire_query_log"
+                                },
+                                {
+                                    "key": "status",
+                                    "type": "string",
+                                    "value": "ok"
+                                },
+                                {
+                                    "key": "time",
+                                    "type": "string",
+                                    "value": "19ms"
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "type": "string",
+                                    "value": "src/utils/pgwire/src/pg_protocol.rs"
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "type": "string",
+                                    "value": "pgwire::pg_protocol"
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "type": "int64",
+                                    "value": 304
+                                },
+                                {
+                                    "key": "message",
+                                    "type": "string",
+                                    "value": ""
+                                }
+                            ],
+                            "timestamp": 1703158086371459
+                        }
+                    ],
+                    "operationName": "handle_query",
+                    "processID": "Bugens-MacBook-Pro.local-83931",
+                    "references": null,
+                    "spanID": "132162644d88a3fa",
+                    "startTime": 1703158086351605,
+                    "tags": [
+                        {
+                            "key": "sql",
+                            "type": "string",
+                            "value": "drop table t;"
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 18243791
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/utils/pgwire/src/pg_protocol.rs"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 12
+                        },
+                        {
+                            "key": "session_id",
+                            "type": "int64",
+                            "value": 0
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "pgwire::pg_protocol"
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 222
+                        },
+                        {
+                            "key": "mode",
+                            "type": "string",
+                            "value": "simple query"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 1651876
+                        }
+                    ],
+                    "traceID": "95f3e68af60a5ed3a587831795c1a69d",
+                    "warnings": null
+                }
+            ],
+            "traceID": "95f3e68af60a5ed3a587831795c1a69d"
+        }
+    ]
+}

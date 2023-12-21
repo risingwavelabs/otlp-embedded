@@ -1,0 +1,720 @@
+{
+    "data": [
+        {
+            "traceID": "acce3335064b54eb31aa9f94cf542d80",
+            "spans": [
+                {
+                    "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                    "spanID": "43b76924f37af248",
+                    "operationName": "barrier",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                            "spanID": "91e53aa7c17db6e0"
+                        }
+                    ],
+                    "startTime": 1703149847259815,
+                    "duration": 9058,
+                    "tags": [
+                        {
+                            "key": "otel.library.name",
+                            "type": "string",
+                            "value": "opentelemetry-otlp"
+                        },
+                        {
+                            "key": "otel.library.version",
+                            "type": "string",
+                            "value": "0.13.0"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 2563375
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_meta::barrier::schedule"
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/meta/src/barrier/schedule.rs"
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 116
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 6430041
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 13
+                        },
+                        {
+                            "key": "epoch",
+                            "type": "string",
+                            "value": "5630502322831360"
+                        },
+                        {
+                            "key": "checkpoint",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "otlp"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                    "spanID": "91e53aa7c17db6e0",
+                    "operationName": "/ddl_service.DdlService/DropTable",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                            "spanID": "0012eee0b32aa7b8"
+                        }
+                    ],
+                    "startTime": 1703149847258223,
+                    "duration": 11270,
+                    "tags": [
+                        {
+                            "key": "otel.library.name",
+                            "type": "string",
+                            "value": "opentelemetry-otlp"
+                        },
+                        {
+                            "key": "otel.library.version",
+                            "type": "string",
+                            "value": "0.13.0"
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/common/common_service/src/tracing.rs"
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 9084126
+                        },
+                        {
+                            "key": "uri",
+                            "type": "string",
+                            "value": "http://127.0.0.1:5690/ddl_service.DdlService/DropTable"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 13
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_common_service::tracing"
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 76
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 2171666
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "otlp"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                    "spanID": "8516e9b8b3f9f653",
+                    "operationName": "meta_store_commit",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                            "spanID": "91e53aa7c17db6e0"
+                        }
+                    ],
+                    "startTime": 1703149847259236,
+                    "duration": 190,
+                    "tags": [
+                        {
+                            "key": "otel.library.name",
+                            "type": "string",
+                            "value": "opentelemetry-otlp"
+                        },
+                        {
+                            "key": "otel.library.version",
+                            "type": "string",
+                            "value": "0.13.0"
+                        },
+                        {
+                            "key": "manager",
+                            "type": "string",
+                            "value": "risingwave_meta::manager::catalog::CatalogManager"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 146792
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 31041
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 13
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/meta/src/manager/catalog/mod.rs"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_meta::manager::catalog"
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 1585
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "otlp"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                    "spanID": "cda3a59762098b66",
+                    "operationName": "meta_store_commit",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                            "spanID": "43b76924f37af248"
+                        }
+                    ],
+                    "startTime": 1703149847268187,
+                    "duration": 323,
+                    "tags": [
+                        {
+                            "key": "otel.library.name",
+                            "type": "string",
+                            "value": "opentelemetry-otlp"
+                        },
+                        {
+                            "key": "otel.library.version",
+                            "type": "string",
+                            "value": "0.13.0"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 5
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 107209
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/meta/src/manager/catalog/fragment.rs"
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 671
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_meta::manager::catalog::fragment"
+                        },
+                        {
+                            "key": "manager",
+                            "type": "string",
+                            "value": "risingwave_meta::manager::catalog::fragment::FragmentManager"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 119208
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "otlp"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                    "spanID": "88617c41e80c2caf",
+                    "operationName": "/stream_service.StreamService/InjectBarrier",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                            "spanID": "43b76924f37af248"
+                        }
+                    ],
+                    "startTime": 1703149847261470,
+                    "duration": 537,
+                    "tags": [
+                        {
+                            "key": "otel.library.name",
+                            "type": "string",
+                            "value": "opentelemetry-otlp"
+                        },
+                        {
+                            "key": "otel.library.version",
+                            "type": "string",
+                            "value": "0.13.0"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_common_service::tracing"
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 122250
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 76
+                        },
+                        {
+                            "key": "uri",
+                            "type": "string",
+                            "value": "http://127.0.0.1:5688/stream_service.StreamService/InjectBarrier"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 399250
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/common/common_service/src/tracing.rs"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 9
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "otlp"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                    "spanID": "ffaef3393f5a42cf",
+                    "operationName": "/stream_service.StreamService/DropActors",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                            "spanID": "43b76924f37af248"
+                        }
+                    ],
+                    "startTime": 1703149847266643,
+                    "duration": 404,
+                    "tags": [
+                        {
+                            "key": "otel.library.name",
+                            "type": "string",
+                            "value": "opentelemetry-otlp"
+                        },
+                        {
+                            "key": "otel.library.version",
+                            "type": "string",
+                            "value": "0.13.0"
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/common/common_service/src/tracing.rs"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "risingwave_common_service::tracing"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 323500
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "uri",
+                            "type": "string",
+                            "value": "http://127.0.0.1:5688/stream_service.StreamService/DropActors"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 9
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 76
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 67125
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "otlp"
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "timestamp": 1703149847266976,
+                            "fields": [
+                                {
+                                    "key": "event",
+                                    "type": "string",
+                                    "value": "drop actors"
+                                },
+                                {
+                                    "key": "level",
+                                    "type": "string",
+                                    "value": "DEBUG"
+                                },
+                                {
+                                    "key": "target",
+                                    "type": "string",
+                                    "value": "risingwave_stream::task::stream_manager"
+                                },
+                                {
+                                    "key": "actors",
+                                    "type": "string",
+                                    "value": "[1, 2, 3, 4, 5, 6, 7, 8]"
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "type": "string",
+                                    "value": "src/stream/src/task/stream_manager.rs"
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "type": "string",
+                                    "value": "risingwave_stream::task::stream_manager"
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "type": "int64",
+                                    "value": 340
+                                }
+                            ]
+                        }
+                    ],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "acce3335064b54eb31aa9f94cf542d80",
+                    "spanID": "0012eee0b32aa7b8",
+                    "operationName": "handle_query",
+                    "references": [],
+                    "startTime": 1703149847251539,
+                    "duration": 18819,
+                    "tags": [
+                        {
+                            "key": "otel.library.name",
+                            "type": "string",
+                            "value": "opentelemetry-otlp"
+                        },
+                        {
+                            "key": "otel.library.version",
+                            "type": "string",
+                            "value": "0.13.0"
+                        },
+                        {
+                            "key": "code.filepath",
+                            "type": "string",
+                            "value": "src/utils/pgwire/src/pg_protocol.rs"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "pgwire::pg_protocol"
+                        },
+                        {
+                            "key": "mode",
+                            "type": "string",
+                            "value": "simple query"
+                        },
+                        {
+                            "key": "code.lineno",
+                            "type": "int64",
+                            "value": 222
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 13
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "rw-main"
+                        },
+                        {
+                            "key": "sql",
+                            "type": "string",
+                            "value": "drop table t;"
+                        },
+                        {
+                            "key": "busy_ns",
+                            "type": "int64",
+                            "value": 1417042
+                        },
+                        {
+                            "key": "session_id",
+                            "type": "int64",
+                            "value": 0
+                        },
+                        {
+                            "key": "idle_ns",
+                            "type": "int64",
+                            "value": 17404791
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "otlp"
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "timestamp": 1703149847270320,
+                            "fields": [
+                                {
+                                    "key": "level",
+                                    "type": "string",
+                                    "value": "INFO"
+                                },
+                                {
+                                    "key": "target",
+                                    "type": "string",
+                                    "value": "pgwire_query_log"
+                                },
+                                {
+                                    "key": "status",
+                                    "type": "string",
+                                    "value": "ok"
+                                },
+                                {
+                                    "key": "time",
+                                    "type": "string",
+                                    "value": "18ms"
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "type": "string",
+                                    "value": "src/utils/pgwire/src/pg_protocol.rs"
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "type": "string",
+                                    "value": "pgwire::pg_protocol"
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "type": "int64",
+                                    "value": 304
+                                }
+                            ]
+                        }
+                    ],
+                    "processID": "p3",
+                    "warnings": null
+                }
+            ],
+            "processes": {
+                "p1": {
+                    "serviceName": "meta-Bugens-MacBook-Pro.local-63838",
+                    "tags": [
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "Bugens-MacBook-Pro.local-63838"
+                        },
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "1.5.0-alpha"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "string",
+                            "value": "63838"
+                        }
+                    ]
+                },
+                "p2": {
+                    "serviceName": "compute-Bugens-MacBook-Pro.local-64219",
+                    "tags": [
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "1.5.0-alpha"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "string",
+                            "value": "64219"
+                        },
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "Bugens-MacBook-Pro.local-64219"
+                        }
+                    ]
+                },
+                "p3": {
+                    "serviceName": "frontend-Bugens-MacBook-Pro.local-64232",
+                    "tags": [
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "1.5.0-alpha"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "string",
+                            "value": "64232"
+                        },
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "Bugens-MacBook-Pro.local-64232"
+                        }
+                    ]
+                }
+            },
+            "warnings": null
+        }
+    ],
+    "total": 0,
+    "limit": 0,
+    "offset": 0,
+    "errors": null
+}

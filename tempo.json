@@ -1,0 +1,765 @@
+{
+    "batches": [
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.instance.id",
+                        "value": {
+                            "stringValue": "Bugens-MacBook-Pro.local-88377"
+                        }
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {
+                            "stringValue": "1.5.0-alpha"
+                        }
+                    },
+                    {
+                        "key": "process.pid",
+                        "value": {
+                            "stringValue": "88377"
+                        }
+                    },
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "frontend-Bugens-MacBook-Pro.local-88377"
+                        }
+                    }
+                ],
+                "droppedAttributesCount": 0
+            },
+            "instrumentationLibrarySpans": [
+                {
+                    "spans": [
+                        {
+                            "traceId": "jO/Sj4vZ8qZmDIazBccgkA==",
+                            "spanId": "ofkhS68/Dug=",
+                            "traceState": "",
+                            "parentSpanId": "",
+                            "name": "handle_query",
+                            "startTimeUnixNano": 1703158702269733000,
+                            "endTimeUnixNano": 1703158702289370000,
+                            "attributes": [
+                                {
+                                    "key": "otel.library.version",
+                                    "value": {
+                                        "stringValue": "0.13.0"
+                                    }
+                                },
+                                {
+                                    "key": "idle_ns",
+                                    "value": {
+                                        "intValue": 17889292
+                                    }
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "value": {
+                                        "intValue": 222
+                                    }
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "value": {
+                                        "stringValue": "src/utils/pgwire/src/pg_protocol.rs"
+                                    }
+                                },
+                                {
+                                    "key": "thread.name",
+                                    "value": {
+                                        "stringValue": "rw-main"
+                                    }
+                                },
+                                {
+                                    "key": "mode",
+                                    "value": {
+                                        "stringValue": "simple query"
+                                    }
+                                },
+                                {
+                                    "key": "session_id",
+                                    "value": {
+                                        "intValue": 0
+                                    }
+                                },
+                                {
+                                    "key": "thread.id",
+                                    "value": {
+                                        "intValue": 11
+                                    }
+                                },
+                                {
+                                    "key": "sql",
+                                    "value": {
+                                        "stringValue": "drop table t;"
+                                    }
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "value": {
+                                        "stringValue": "pgwire::pg_protocol"
+                                    }
+                                },
+                                {
+                                    "key": "busy_ns",
+                                    "value": {
+                                        "intValue": 1759542
+                                    }
+                                },
+                                {
+                                    "key": "status.code",
+                                    "value": {
+                                        "intValue": 0
+                                    }
+                                }
+                            ],
+                            "droppedAttributesCount": 0,
+                            "droppedEventsCount": 0,
+                            "droppedLinksCount": 0,
+                            "events": [
+                                {
+                                    "timeUnixNano": 1703158702289313000,
+                                    "attributes": [
+                                        {
+                                            "key": "level",
+                                            "value": {
+                                                "stringValue": "INFO"
+                                            }
+                                        },
+                                        {
+                                            "key": "target",
+                                            "value": {
+                                                "stringValue": "pgwire_query_log"
+                                            }
+                                        },
+                                        {
+                                            "key": "status",
+                                            "value": {
+                                                "stringValue": "ok"
+                                            }
+                                        },
+                                        {
+                                            "key": "time",
+                                            "value": {
+                                                "stringValue": "19ms"
+                                            }
+                                        },
+                                        {
+                                            "key": "code.filepath",
+                                            "value": {
+                                                "stringValue": "src/utils/pgwire/src/pg_protocol.rs"
+                                            }
+                                        },
+                                        {
+                                            "key": "code.namespace",
+                                            "value": {
+                                                "stringValue": "pgwire::pg_protocol"
+                                            }
+                                        },
+                                        {
+                                            "key": "code.lineno",
+                                            "value": {
+                                                "intValue": 304
+                                            }
+                                        }
+                                    ],
+                                    "droppedAttributesCount": 0,
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "instrumentationLibrary": {
+                        "name": "opentelemetry-otlp",
+                        "version": "0.13.0"
+                    }
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "process.pid",
+                        "value": {
+                            "stringValue": "88026"
+                        }
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {
+                            "stringValue": "1.5.0-alpha"
+                        }
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {
+                            "stringValue": "Bugens-MacBook-Pro.local-88026"
+                        }
+                    },
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "meta-Bugens-MacBook-Pro.local-88026"
+                        }
+                    }
+                ],
+                "droppedAttributesCount": 0
+            },
+            "instrumentationLibrarySpans": [
+                {
+                    "spans": [
+                        {
+                            "traceId": "jO/Sj4vZ8qZmDIazBccgkA==",
+                            "spanId": "K7GbjLScsgA=",
+                            "traceState": "",
+                            "parentSpanId": "ofkhS68/Dug=",
+                            "name": "/ddl_service.DdlService/DropTable",
+                            "startTimeUnixNano": 1703158702273510000,
+                            "endTimeUnixNano": 1703158702288590000,
+                            "attributes": [
+                                {
+                                    "key": "otel.library.version",
+                                    "value": {
+                                        "stringValue": "0.13.0"
+                                    }
+                                },
+                                {
+                                    "key": "uri",
+                                    "value": {
+                                        "stringValue": "http://127.0.0.1:5690/ddl_service.DdlService/DropTable"
+                                    }
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "value": {
+                                        "intValue": 76
+                                    }
+                                },
+                                {
+                                    "key": "thread.id",
+                                    "value": {
+                                        "intValue": 12
+                                    }
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "value": {
+                                        "stringValue": "risingwave_common_service::tracing"
+                                    }
+                                },
+                                {
+                                    "key": "idle_ns",
+                                    "value": {
+                                        "intValue": 11698793
+                                    }
+                                },
+                                {
+                                    "key": "thread.name",
+                                    "value": {
+                                        "stringValue": "rw-main"
+                                    }
+                                },
+                                {
+                                    "key": "busy_ns",
+                                    "value": {
+                                        "intValue": 3372873
+                                    }
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "value": {
+                                        "stringValue": "src/common/common_service/src/tracing.rs"
+                                    }
+                                },
+                                {
+                                    "key": "status.code",
+                                    "value": {
+                                        "intValue": 0
+                                    }
+                                }
+                            ],
+                            "droppedAttributesCount": 0,
+                            "droppedEventsCount": 0,
+                            "droppedLinksCount": 0
+                        },
+                        {
+                            "traceId": "jO/Sj4vZ8qZmDIazBccgkA==",
+                            "spanId": "FJAQZxmYwmY=",
+                            "traceState": "",
+                            "parentSpanId": "K7GbjLScsgA=",
+                            "name": "meta_store_commit",
+                            "startTimeUnixNano": 1703158702275303000,
+                            "endTimeUnixNano": 1703158702275629800,
+                            "attributes": [
+                                {
+                                    "key": "otel.library.version",
+                                    "value": {
+                                        "stringValue": "0.13.0"
+                                    }
+                                },
+                                {
+                                    "key": "manager",
+                                    "value": {
+                                        "stringValue": "risingwave_meta::manager::catalog::CatalogManager"
+                                    }
+                                },
+                                {
+                                    "key": "idle_ns",
+                                    "value": {
+                                        "intValue": 42459
+                                    }
+                                },
+                                {
+                                    "key": "thread.name",
+                                    "value": {
+                                        "stringValue": "rw-main"
+                                    }
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "value": {
+                                        "stringValue": "risingwave_meta::manager::catalog"
+                                    }
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "value": {
+                                        "stringValue": "src/meta/src/manager/catalog/mod.rs"
+                                    }
+                                },
+                                {
+                                    "key": "busy_ns",
+                                    "value": {
+                                        "intValue": 271333
+                                    }
+                                },
+                                {
+                                    "key": "thread.id",
+                                    "value": {
+                                        "intValue": 12
+                                    }
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "value": {
+                                        "intValue": 1585
+                                    }
+                                },
+                                {
+                                    "key": "status.code",
+                                    "value": {
+                                        "intValue": 0
+                                    }
+                                }
+                            ],
+                            "droppedAttributesCount": 0,
+                            "droppedEventsCount": 0,
+                            "droppedLinksCount": 0
+                        },
+                        {
+                            "traceId": "jO/Sj4vZ8qZmDIazBccgkA==",
+                            "spanId": "POl9qHi9678=",
+                            "traceState": "",
+                            "parentSpanId": "K7GbjLScsgA=",
+                            "name": "barrier",
+                            "startTimeUnixNano": 1703158702276325000,
+                            "endTimeUnixNano": 1703158702287986200,
+                            "attributes": [
+                                {
+                                    "key": "otel.library.version",
+                                    "value": {
+                                        "stringValue": "0.13.0"
+                                    }
+                                },
+                                {
+                                    "key": "thread.name",
+                                    "value": {
+                                        "stringValue": "rw-main"
+                                    }
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "value": {
+                                        "stringValue": "risingwave_meta::barrier::schedule"
+                                    }
+                                },
+                                {
+                                    "key": "checkpoint",
+                                    "value": {
+                                        "boolValue": true
+                                    }
+                                },
+                                {
+                                    "key": "busy_ns",
+                                    "value": {
+                                        "intValue": 3075709
+                                    }
+                                },
+                                {
+                                    "key": "thread.id",
+                                    "value": {
+                                        "intValue": 12
+                                    }
+                                },
+                                {
+                                    "key": "epoch",
+                                    "value": {
+                                        "stringValue": "5631082645159936"
+                                    }
+                                },
+                                {
+                                    "key": "idle_ns",
+                                    "value": {
+                                        "intValue": 8518833
+                                    }
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "value": {
+                                        "stringValue": "src/meta/src/barrier/schedule.rs"
+                                    }
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "value": {
+                                        "intValue": 116
+                                    }
+                                },
+                                {
+                                    "key": "status.code",
+                                    "value": {
+                                        "intValue": 0
+                                    }
+                                }
+                            ],
+                            "droppedAttributesCount": 0,
+                            "droppedEventsCount": 0,
+                            "droppedLinksCount": 0
+                        },
+                        {
+                            "traceId": "jO/Sj4vZ8qZmDIazBccgkA==",
+                            "spanId": "g/SeYg2Dmh0=",
+                            "traceState": "",
+                            "parentSpanId": "POl9qHi9678=",
+                            "name": "meta_store_commit",
+                            "startTimeUnixNano": 1703158702287401000,
+                            "endTimeUnixNano": 1703158702287570700,
+                            "attributes": [
+                                {
+                                    "key": "otel.library.version",
+                                    "value": {
+                                        "stringValue": "0.13.0"
+                                    }
+                                },
+                                {
+                                    "key": "busy_ns",
+                                    "value": {
+                                        "intValue": 134250
+                                    }
+                                },
+                                {
+                                    "key": "thread.id",
+                                    "value": {
+                                        "intValue": 11
+                                    }
+                                },
+                                {
+                                    "key": "thread.name",
+                                    "value": {
+                                        "stringValue": "rw-main"
+                                    }
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "value": {
+                                        "stringValue": "risingwave_meta::manager::catalog::fragment"
+                                    }
+                                },
+                                {
+                                    "key": "idle_ns",
+                                    "value": {
+                                        "intValue": 28875
+                                    }
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "value": {
+                                        "stringValue": "src/meta/src/manager/catalog/fragment.rs"
+                                    }
+                                },
+                                {
+                                    "key": "manager",
+                                    "value": {
+                                        "stringValue": "risingwave_meta::manager::catalog::fragment::FragmentManager"
+                                    }
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "value": {
+                                        "intValue": 671
+                                    }
+                                },
+                                {
+                                    "key": "status.code",
+                                    "value": {
+                                        "intValue": 0
+                                    }
+                                }
+                            ],
+                            "droppedAttributesCount": 0,
+                            "droppedEventsCount": 0,
+                            "droppedLinksCount": 0
+                        }
+                    ],
+                    "instrumentationLibrary": {
+                        "name": "opentelemetry-otlp",
+                        "version": "0.13.0"
+                    }
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "process.pid",
+                        "value": {
+                            "stringValue": "88364"
+                        }
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {
+                            "stringValue": "Bugens-MacBook-Pro.local-88364"
+                        }
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {
+                            "stringValue": "1.5.0-alpha"
+                        }
+                    },
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "compute-Bugens-MacBook-Pro.local-88364"
+                        }
+                    }
+                ],
+                "droppedAttributesCount": 0
+            },
+            "instrumentationLibrarySpans": [
+                {
+                    "spans": [
+                        {
+                            "traceId": "jO/Sj4vZ8qZmDIazBccgkA==",
+                            "spanId": "hZFnbxmwL8A=",
+                            "traceState": "",
+                            "parentSpanId": "POl9qHi9678=",
+                            "name": "/stream_service.StreamService/InjectBarrier",
+                            "startTimeUnixNano": 1703158702279116000,
+                            "endTimeUnixNano": 1703158702280083000,
+                            "attributes": [
+                                {
+                                    "key": "otel.library.version",
+                                    "value": {
+                                        "stringValue": "0.13.0"
+                                    }
+                                },
+                                {
+                                    "key": "idle_ns",
+                                    "value": {
+                                        "intValue": 101000
+                                    }
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "value": {
+                                        "intValue": 76
+                                    }
+                                },
+                                {
+                                    "key": "busy_ns",
+                                    "value": {
+                                        "intValue": 846167
+                                    }
+                                },
+                                {
+                                    "key": "thread.name",
+                                    "value": {
+                                        "stringValue": "rw-main"
+                                    }
+                                },
+                                {
+                                    "key": "uri",
+                                    "value": {
+                                        "stringValue": "http://127.0.0.1:5688/stream_service.StreamService/InjectBarrier"
+                                    }
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "value": {
+                                        "stringValue": "src/common/common_service/src/tracing.rs"
+                                    }
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "value": {
+                                        "stringValue": "risingwave_common_service::tracing"
+                                    }
+                                },
+                                {
+                                    "key": "thread.id",
+                                    "value": {
+                                        "intValue": 9
+                                    }
+                                },
+                                {
+                                    "key": "status.code",
+                                    "value": {
+                                        "intValue": 0
+                                    }
+                                }
+                            ],
+                            "droppedAttributesCount": 0,
+                            "droppedEventsCount": 0,
+                            "droppedLinksCount": 0
+                        },
+                        {
+                            "traceId": "jO/Sj4vZ8qZmDIazBccgkA==",
+                            "spanId": "hDq6oLY6kGw=",
+                            "traceState": "",
+                            "parentSpanId": "POl9qHi9678=",
+                            "name": "/stream_service.StreamService/DropActors",
+                            "startTimeUnixNano": 1703158702285912000,
+                            "endTimeUnixNano": 1703158702286462200,
+                            "attributes": [
+                                {
+                                    "key": "otel.library.version",
+                                    "value": {
+                                        "stringValue": "0.13.0"
+                                    }
+                                },
+                                {
+                                    "key": "code.lineno",
+                                    "value": {
+                                        "intValue": 76
+                                    }
+                                },
+                                {
+                                    "key": "thread.id",
+                                    "value": {
+                                        "intValue": 9
+                                    }
+                                },
+                                {
+                                    "key": "uri",
+                                    "value": {
+                                        "stringValue": "http://127.0.0.1:5688/stream_service.StreamService/DropActors"
+                                    }
+                                },
+                                {
+                                    "key": "busy_ns",
+                                    "value": {
+                                        "intValue": 435375
+                                    }
+                                },
+                                {
+                                    "key": "idle_ns",
+                                    "value": {
+                                        "intValue": 100042
+                                    }
+                                },
+                                {
+                                    "key": "thread.name",
+                                    "value": {
+                                        "stringValue": "rw-main"
+                                    }
+                                },
+                                {
+                                    "key": "code.filepath",
+                                    "value": {
+                                        "stringValue": "src/common/common_service/src/tracing.rs"
+                                    }
+                                },
+                                {
+                                    "key": "code.namespace",
+                                    "value": {
+                                        "stringValue": "risingwave_common_service::tracing"
+                                    }
+                                },
+                                {
+                                    "key": "status.code",
+                                    "value": {
+                                        "intValue": 0
+                                    }
+                                }
+                            ],
+                            "droppedAttributesCount": 0,
+                            "droppedEventsCount": 0,
+                            "droppedLinksCount": 0,
+                            "events": [
+                                {
+                                    "timeUnixNano": 1703158702286368000,
+                                    "attributes": [
+                                        {
+                                            "key": "message",
+                                            "value": {
+                                                "stringValue": "drop actors"
+                                            }
+                                        },
+                                        {
+                                            "key": "level",
+                                            "value": {
+                                                "stringValue": "DEBUG"
+                                            }
+                                        },
+                                        {
+                                            "key": "target",
+                                            "value": {
+                                                "stringValue": "risingwave_stream::task::stream_manager"
+                                            }
+                                        },
+                                        {
+                                            "key": "actors",
+                                            "value": {
+                                                "stringValue": "[1, 2, 3, 4, 5, 6, 7, 8]"
+                                            }
+                                        },
+                                        {
+                                            "key": "code.filepath",
+                                            "value": {
+                                                "stringValue": "src/stream/src/task/stream_manager.rs"
+                                            }
+                                        },
+                                        {
+                                            "key": "code.namespace",
+                                            "value": {
+                                                "stringValue": "risingwave_stream::task::stream_manager"
+                                            }
+                                        },
+                                        {
+                                            "key": "code.lineno",
+                                            "value": {
+                                                "intValue": 340
+                                            }
+                                        }
+                                    ],
+                                    "droppedAttributesCount": 0,
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "instrumentationLibrary": {
+                        "name": "opentelemetry-otlp",
+                        "version": "0.13.0"
+                    }
+                }
+            ]
+        }
+    ]
+}
