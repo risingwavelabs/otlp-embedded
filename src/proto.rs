@@ -1,4 +1,5 @@
 #![allow(non_snake_case)]
+#![allow(clippy::all)]
 
 mod opentelemetry {
     pub mod proto {

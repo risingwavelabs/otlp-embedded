@@ -1,6 +1,9 @@
 mod proto;
 
-use std::{collections::HashMap, sync::Arc};
+use std::{
+    collections::{hash_map::Entry, HashMap},
+    sync::Arc,
+};
 
 use itertools::Itertools;
 use proto::{
@@ -28,82 +31,82 @@ pub enum ValueNode {
 
 #[derive(Default)]
 pub struct Trace {
-    tree: indextree::Arena<ValueNode>,
-    span_to_id: HashMap<SpanId, indextree::NodeId>,
+    spans: HashMap<SpanId, ValueNode>,
 }
 
 pub use proto::collector::trace::v1::trace_service_server::TraceServiceServer;
 
 impl Trace {
-    fn add_value(&mut self, value: Value) {
-        if value.span.span_id.is_empty() {
+    fn add_value(&mut self, mut value: Value) {
+        let span_id = &value.span.span_id;
+        let parent_id = &value.span.parent_span_id;
+
+        if span_id.is_empty() {
             return;
         }
 
-        let parent_id = {
-            let parent_span_id = value.span.parent_span_id.clone();
+        // If there's a parent and not recorded yet, add a placeholder.
+        if !parent_id.is_empty() {
+            self.spans
+                .entry(parent_id.clone())
+                .or_insert(ValueNode::Placeholder);
+        }
 
-            if parent_span_id.is_empty() {
-                None
-            } else {
-                match self.span_to_id.entry(parent_span_id) {
-                    std::collections::hash_map::Entry::Occupied(o) => *o.get(),
-                    std::collections::hash_map::Entry::Vacant(v) => {
-                        *v.insert(self.tree.new_node(ValueNode::Placeholder))
+        // Add a `message` attribute from the event name. Otherwise, it won't be displayed in Tempo.
+        for event in &mut value.span.events {
+            const MESSAGE: &str = "message";
+
+            event.attributes.push(proto::common::v1::KeyValue {
+                key: MESSAGE.to_string(),
+                value: Some(proto::common::v1::AnyValue {
+                    value: Some(proto::common::v1::any_value::Value::StringValue(
+                        event.name.clone(),
+                    )),
+                }),
+            });
+        }
+
+        match self.spans.entry(span_id.clone()) {
+            Entry::Occupied(o) => {
+                let o = o.into_mut();
+                match o {
+                    ValueNode::Placeholder => *o = ValueNode::Value(value),
+                    ValueNode::Value(o) => {
+                        // Update the span with the new value.
+                        o.span.attributes.extend(value.span.attributes);
+                        o.span.events.extend(value.span.events);
+                        o.span.start_time_unix_nano =
+                            (o.span.start_time_unix_nano).min(value.span.start_time_unix_nano);
+                        o.span.end_time_unix_nano =
+                            (o.span.end_time_unix_nano).max(value.span.end_time_unix_nano);
                     }
                 }
-                .into()
             }
-        };
-
-        if let Some(&id) = self.span_to_id.get(&value.span.span_id) {
-            let node = &mut self.tree[id];
-            match node.get_mut() {
-                n @ ValueNode::Placeholder => *n = ValueNode::Value(value),
-                ValueNode::Value(original) => {
-                    original.span.events.extend(value.span.events);
-                    original.span.start_time_unix_nano = original
-                        .span
-                        .start_time_unix_nano
-                        .min(value.span.start_time_unix_nano);
-                    original.span.end_time_unix_nano = original
-                        .span
-                        .end_time_unix_nano
-                        .max(value.span.end_time_unix_nano);
-                }
+            Entry::Vacant(v) => {
+                v.insert(ValueNode::Value(value));
             }
-        } else {
-            let span_id = value.span.span_id.clone();
-            let child_id = if let Some(parent_id) = parent_id {
-                parent_id.append_value(ValueNode::Value(value), &mut self.tree)
-            } else {
-                self.tree.new_node(ValueNode::Value(value))
-            };
-            let old = self.span_to_id.insert(span_id, child_id);
-            assert!(old.is_none());
         }
     }
 
     pub fn is_complete(&self) -> bool {
-        !self.tree.is_empty()
-            && self
-                .tree
-                .iter()
-                .all(|n| matches!(n.get(), ValueNode::Value(_)))
+        // Since all new non-root values recorded will add a placeholder for the parent.
+        // If there's no placeholder, it means the trace is complete.
+        self.spans
+            .values()
+            .all(|v| matches!(v, ValueNode::Value(_)))
     }
 
     pub fn to_tempo(&self) -> serde_json::Value {
         let entries = self
-            .tree
-            .iter()
-            .map(|node| node.get())
-            .filter_map(|value| match value {
+            .spans
+            .values()
+            .filter_map(|node| match node {
                 ValueNode::Placeholder => None,
                 ValueNode::Value(value) => Some(value),
             })
             .map(|v| {
                 json!({
-                    "resource": (*v.resource).clone(),
+                    "resource": &*v.resource,
                     "instrumentationLibrarySpans": [{
                         "spans": [v.span]
                     }]
@@ -185,13 +188,9 @@ impl TraceService for MyServer {
             state.apply(resource_spans);
         }
 
-        // if let Some(completed) = state
-        //     .traces
-        //     .iter()
-        //     .find(|(_, trace)| trace.is_complete() && trace.tree.iter().count() > 5)
-        // {
-        //     println!("{}", completed.1.to_tempo());
-        // }
+        if let Some(completed) = state.traces.iter().find(|(_, trace)| trace.is_complete()) {
+            println!("{}", completed.1.to_tempo());
+        }
 
         Ok(Response::new(ExportTraceServiceResponse {
             partial_success: None,
