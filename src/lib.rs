@@ -1,3 +1,4 @@
+mod jaeger;
 mod proto;
 
 use std::{
@@ -35,6 +36,8 @@ pub struct Trace {
 }
 
 pub use proto::collector::trace::v1::trace_service_server::TraceServiceServer;
+
+use crate::jaeger::{span_to_jaeger_json, JaegerProcess};
 
 impl Trace {
     fn add_value(&mut self, mut value: Value) {
@@ -118,6 +121,40 @@ impl Trace {
             "batches": entries
         })
     }
+
+    pub fn to_jaeger(&self) -> serde_json::Value {
+        let mut processes = HashMap::new();
+
+        let entries = self
+            .spans
+            .values()
+            .filter_map(|node| match node {
+                ValueNode::Placeholder => None,
+                ValueNode::Value(value) => Some(value),
+            })
+            .map(|v| {
+                let process = JaegerProcess::from((*v.resource).clone());
+                let key = process.key.clone();
+                processes.insert(key.clone(), process);
+
+                span_to_jaeger_json(v.span.clone(), key)
+            })
+            .collect_vec();
+
+        if entries.is_empty() {
+            return json!({});
+        }
+
+        let trace_id = &entries[0]["traceID"];
+
+        json!({
+            "data": [{
+                "traceID": trace_id,
+                "spans": entries,
+                "processes": processes,
+            }]
+        })
+    }
 }
 
 pub struct State {
@@ -189,7 +226,7 @@ impl TraceService for MyServer {
         }
 
         if let Some(completed) = state.traces.iter().find(|(_, trace)| trace.is_complete()) {
-            println!("{}", completed.1.to_tempo());
+            println!("{}", completed.1.to_jaeger());
         }
 
         Ok(Response::new(ExportTraceServiceResponse {
