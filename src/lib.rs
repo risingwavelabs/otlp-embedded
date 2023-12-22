@@ -20,24 +20,27 @@ use tonic::{Request, Response, Status};
 type TraceId = Vec<u8>;
 type SpanId = Vec<u8>;
 
+#[derive(Debug, Clone)]
 pub struct Value {
     span: Span,
     resource: Arc<Resource>,
 }
 
+#[derive(Debug, Clone)]
 pub enum ValueNode {
     Placeholder,
     Value(Value),
 }
 
-#[derive(Default)]
+#[derive(Default, Debug, Clone)]
 pub struct Trace {
     spans: HashMap<SpanId, ValueNode>,
 }
 
+pub use jaeger::server::run as run_jaeger_server;
 pub use proto::collector::trace::v1::trace_service_server::TraceServiceServer;
 
-use crate::jaeger::{span_to_jaeger_json, JaegerProcess};
+use crate::jaeger::model::{span_to_jaeger_json, JaegerProcess};
 
 impl Trace {
     fn add_value(&mut self, mut value: Value) {
@@ -91,6 +94,13 @@ impl Trace {
         }
     }
 
+    fn iter_valid(&self) -> impl Iterator<Item = &Value> {
+        self.spans.values().filter_map(|node| match node {
+            ValueNode::Placeholder => None,
+            ValueNode::Value(value) => Some(value),
+        })
+    }
+
     pub fn is_complete(&self) -> bool {
         // Since all new non-root values recorded will add a placeholder for the parent.
         // If there's no placeholder, it means the trace is complete.
@@ -99,14 +109,14 @@ impl Trace {
             .all(|v| matches!(v, ValueNode::Value(_)))
     }
 
+    pub fn hex_id(&self) -> String {
+        let bytes = &self.iter_valid().next().unwrap().span.trace_id;
+        hex::encode(bytes)
+    }
+
     pub fn to_tempo(&self) -> serde_json::Value {
         let entries = self
-            .spans
-            .values()
-            .filter_map(|node| match node {
-                ValueNode::Placeholder => None,
-                ValueNode::Value(value) => Some(value),
-            })
+            .iter_valid()
             .map(|v| {
                 json!({
                     "resource": &*v.resource,
@@ -126,12 +136,7 @@ impl Trace {
         let mut processes = HashMap::new();
 
         let entries = self
-            .spans
-            .values()
-            .filter_map(|node| match node {
-                ValueNode::Placeholder => None,
-                ValueNode::Value(value) => Some(value),
-            })
+            .iter_valid()
             .map(|v| {
                 let process = JaegerProcess::from((*v.resource).clone());
                 let key = process.key.clone();
@@ -161,18 +166,18 @@ pub struct State {
     traces: LruMap<TraceId, Trace>,
 }
 
+pub type StateRef = Arc<RwLock<State>>;
+
 impl State {
-    fn new() -> Self {
-        Self {
+    pub fn new() -> StateRef {
+        let this = Self {
             traces: LruMap::new(ByLength::new(100)),
-        }
+        };
+
+        Arc::new(RwLock::new(this))
     }
 
     fn add_value(&mut self, value: Value) {
-        if self.traces.is_empty() {
-            println!("got first value!!!");
-        }
-
         self.traces
             .get_or_insert(value.span.trace_id.clone(), Default::default)
             .unwrap()
@@ -196,17 +201,19 @@ impl State {
             self.add_value(value);
         }
     }
+
+    pub fn get_by_id(&self, id: &[u8]) -> Option<Trace> {
+        self.traces.peek(id).cloned()
+    }
 }
 
 pub struct MyServer {
-    state: RwLock<State>,
+    state: Arc<RwLock<State>>,
 }
 
 impl MyServer {
-    pub fn new() -> Self {
-        Self {
-            state: State::new().into(),
-        }
+    pub fn new(state: Arc<RwLock<State>>) -> Self {
+        Self { state }
     }
 }
 
@@ -218,15 +225,13 @@ impl TraceService for MyServer {
     ) -> std::result::Result<Response<ExportTraceServiceResponse>, Status> {
         let request = request.into_inner();
 
-        // eprintln!("Got a request {:#?}", request);
-
         let mut state = self.state.write().await;
         for resource_spans in request.resource_spans {
             state.apply(resource_spans);
         }
 
         if let Some(completed) = state.traces.iter().find(|(_, trace)| trace.is_complete()) {
-            println!("{}", completed.1.to_jaeger());
+            println!("{}", completed.1.hex_id());
         }
 
         Ok(Response::new(ExportTraceServiceResponse {
