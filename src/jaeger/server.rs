@@ -1,35 +1,84 @@
+use std::cmp::Reverse;
+
 use axum::{
-    extract::Path,
+    extract::{Path, Query},
     http::{header, StatusCode, Uri},
     response::{Html, IntoResponse, Response},
     routing::get,
     Extension, Json, Router,
 };
+use itertools::Itertools;
 use rust_embed::RustEmbed;
+use serde::Deserialize;
+use serde_json::json;
 
 use crate::StateRef;
 
-pub async fn run(state: StateRef) {
-    let app = Router::new()
-        .route("/api/traces/:id", get(trace))
+pub fn app(state: StateRef) -> Router {
+    Router::new()
+        .route("/api/traces/:hex_id", get(trace))
+        .route("/api/services", get(services))
+        .route("/api/services/:service/operations", get(operations))
+        .route("/api/traces", get(traces))
         .layer(Extension(state))
-        .fallback(static_handler);
-
-    axum::Server::bind(&"0.0.0.0:10188".parse().unwrap())
-        .serve(app.into_make_service())
-        .await
-        .unwrap();
+        .fallback(static_handler)
 }
 
-async fn trace(Path(id): Path<String>, Extension(state): Extension<StateRef>) -> impl IntoResponse {
-    let id = hex::decode(id).unwrap_or_default();
+async fn trace(
+    Path(hex_id): Path<String>,
+    Extension(state): Extension<StateRef>,
+) -> impl IntoResponse {
+    let id = hex::decode(&hex_id).unwrap_or_default();
     let trace = state.read().await.get_by_id(&id);
 
     if let Some(trace) = trace {
         Json(trace.to_jaeger()).into_response()
     } else {
-        not_found()
+        not_found_with_msg(format!("Trace {hex_id} not found, maybe expired."))
     }
+}
+
+async fn services() -> impl IntoResponse {
+    let mock = json!({
+        "data": ["all"],
+        "total": 1,
+    });
+
+    Json(mock).into_response()
+}
+
+async fn operations() -> impl IntoResponse {
+    let mock = json!({
+        "data": [],
+        "total": 0,
+    });
+
+    Json(mock).into_response()
+}
+
+#[derive(Deserialize)]
+struct TracesQuery {
+    limit: usize,
+}
+
+async fn traces(
+    Query(query): Query<TracesQuery>,
+    Extension(state): Extension<StateRef>,
+) -> impl IntoResponse {
+    let traces = (state.read().await)
+        .get_all_complete()
+        .into_iter()
+        .sorted_by_cached_key(|t| Reverse(t.end_time))
+        .map(|t| t.to_jaeger_entry())
+        .take(query.limit)
+        .collect_vec();
+
+    let mock = json!({
+        "data": traces,
+        "total": traces.len(),
+    });
+
+    Json(mock).into_response()
 }
 
 const INDEX_HTML: &str = "index.html";
@@ -71,5 +120,9 @@ fn index_html() -> Response {
 }
 
 fn not_found() -> Response {
-    (StatusCode::NOT_FOUND, "Not Found").into_response()
+    not_found_with_msg("Not Found")
+}
+
+fn not_found_with_msg(msg: impl Into<String>) -> Response {
+    (StatusCode::NOT_FOUND, msg.into()).into_response()
 }

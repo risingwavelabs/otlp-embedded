@@ -4,6 +4,7 @@ mod proto;
 use std::{
     collections::{hash_map::Entry, HashMap},
     sync::Arc,
+    time::{Duration, SystemTime},
 };
 
 use itertools::Itertools;
@@ -32,12 +33,22 @@ pub enum ValueNode {
     Value(Value),
 }
 
-#[derive(Default, Debug, Clone)]
+#[derive(Debug, Clone)]
 pub struct Trace {
     spans: HashMap<SpanId, ValueNode>,
+    end_time: SystemTime,
 }
 
-pub use jaeger::server::run as run_jaeger_server;
+impl Default for Trace {
+    fn default() -> Self {
+        Self {
+            spans: Default::default(),
+            end_time: SystemTime::UNIX_EPOCH,
+        }
+    }
+}
+
+pub use jaeger::server::app as jaeger_app;
 pub use proto::collector::trace::v1::trace_service_server::TraceServiceServer;
 
 use crate::jaeger::model::{span_to_jaeger_json, JaegerProcess};
@@ -71,6 +82,9 @@ impl Trace {
                 }),
             });
         }
+
+        self.end_time = (self.end_time)
+            .max(SystemTime::UNIX_EPOCH + Duration::from_nanos(value.span.end_time_unix_nano as _));
 
         match self.spans.entry(span_id.clone()) {
             Entry::Occupied(o) => {
@@ -133,6 +147,14 @@ impl Trace {
     }
 
     pub fn to_jaeger(&self) -> serde_json::Value {
+        json!({
+            "data": [
+                self.to_jaeger_entry()
+            ]
+        })
+    }
+
+    pub fn to_jaeger_entry(&self) -> serde_json::Value {
         let mut processes = HashMap::new();
 
         let entries = self
@@ -153,11 +175,9 @@ impl Trace {
         let trace_id = &entries[0]["traceID"];
 
         json!({
-            "data": [{
-                "traceID": trace_id,
-                "spans": entries,
-                "processes": processes,
-            }]
+            "traceID": trace_id,
+            "spans": entries,
+            "processes": processes,
         })
     }
 }
@@ -204,6 +224,19 @@ impl State {
 
     pub fn get_by_id(&self, id: &[u8]) -> Option<Trace> {
         self.traces.peek(id).cloned()
+    }
+
+    pub fn get_all_complete(&self) -> Vec<Trace> {
+        self.traces
+            .iter()
+            .filter_map(|(_, trace)| {
+                if trace.is_complete() {
+                    Some(trace.clone())
+                } else {
+                    None
+                }
+            })
+            .collect()
     }
 }
 
