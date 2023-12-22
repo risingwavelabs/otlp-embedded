@@ -1,5 +1,4 @@
 use axum::{
-    body::Body,
     extract::Path,
     http::{header, StatusCode, Uri},
     response::{Html, IntoResponse, Response},
@@ -16,10 +15,10 @@ pub async fn run(state: StateRef) {
         .layer(Extension(state))
         .fallback(static_handler);
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:10188")
+    axum::Server::bind(&"0.0.0.0:10188".parse().unwrap())
+        .serve(app.into_make_service())
         .await
         .unwrap();
-    axum::serve(listener, app).await.unwrap();
 }
 
 async fn trace(Path(id): Path<String>, Extension(state): Extension<StateRef>) -> impl IntoResponse {
@@ -46,10 +45,10 @@ async fn static_handler(uri: Uri) -> Response {
         Some(content) => {
             let mime = content.metadata.mimetype();
 
-            Response::builder()
-                .header(header::CONTENT_TYPE, mime)
-                .body(Body::from(content.data))
-                .unwrap()
+            let mut res = content.data.into_response();
+            res.headers_mut()
+                .insert(header::CONTENT_TYPE, mime.parse().unwrap());
+            res
         }
 
         None => {
