@@ -5,18 +5,18 @@ use tonic::{Request, Response, Status};
 
 use crate::State;
 
-pub struct MyServer {
+pub struct TraceServiceImpl {
     state: Arc<RwLock<State>>,
 }
 
-impl MyServer {
+impl TraceServiceImpl {
     pub fn new(state: Arc<RwLock<State>>) -> Self {
         Self { state }
     }
 }
 
 #[tonic::async_trait]
-impl TraceService for MyServer {
+impl TraceService for TraceServiceImpl {
     async fn export(
         &self,
         request: Request<ExportTraceServiceRequest>,

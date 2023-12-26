@@ -1,4 +1,4 @@
-use otlp_embedded::{jaeger_ui_app, MyServer, State, TraceServiceServer};
+use otlp_embedded::{jaeger_ui_app, State, TraceServiceImpl, TraceServiceServer};
 
 #[tokio::main]
 async fn main() {
@@ -13,7 +13,7 @@ async fn main() {
     });
 
     tonic::transport::Server::builder()
-        .add_service(TraceServiceServer::new(MyServer::new(state_clone)))
+        .add_service(TraceServiceServer::new(TraceServiceImpl::new(state_clone)))
         .serve("0.0.0.0:43177".parse().unwrap())
         .await
         .unwrap();
