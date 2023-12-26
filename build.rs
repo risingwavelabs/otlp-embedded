@@ -5,8 +5,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .message_attribute(".", derive_serde)
         .enum_attribute(".", derive_serde)
         .compile(
-            &["opentelemetry-proto/opentelemetry/proto/collector/trace/v1/trace_service.proto"],
-            &["opentelemetry-proto/"],
+            &["proto/opentelemetry/proto/collector/trace/v1/trace_service.proto"],
+            &["proto/"],
         )?;
 
     Ok(())
