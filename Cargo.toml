@@ -11,17 +11,12 @@ futures = "0.3"
 hex = "0.4"
 itertools = "0.12"
 mime_guess = "2"
-opentelemetry-proto = { version = "0.4", features = ["gen-tonic", "trace", "with-serde"] }
-opentelemetry_sdk = { version = "0.21", default-features = false }
-prost = "0.11"
+opentelemetry-proto = { path = "/Users/bugenzhao/Developer/opentelemetry-rust/opentelemetry-proto", features = ["gen-tonic", "trace", "with-serde"] }
+prost = "0.12"
 rust-embed = { version = "8", features = ["mime-guess"] }
 schnellru = "0.2"
 serde = "1"
 serde_json = "1"
 tokio = { version = "1", features = ["full"] }
-tonic = "0.9"
-tower = { version = "0.4", features = ["util"] }
+tonic = { package = "madsim-tonic", version = "0.4.1" }
 tracing = "0.1"
-
-[build-dependencies]
-tonic-build = "0.9"
