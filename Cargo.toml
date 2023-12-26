@@ -5,12 +5,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-anyhow = "1"
 axum = "0.6"
-futures = "0.3"
 hex = "0.4.3"
 itertools = "0.12"
-mime_guess = "2"
 prost = "0.12"
 rust-embed = { version = "8", features = ["mime-guess"] }
 schnellru = "0.2"

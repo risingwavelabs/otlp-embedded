@@ -1,0 +1,4 @@
+The UI assets under this directory are vendorized from the
+production build of the Jaeger UI 1.36.0 release.
+
+https://github.com/jaegertracing/jaeger-ui/releases/tag/v1.36.0
