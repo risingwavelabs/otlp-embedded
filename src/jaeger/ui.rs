@@ -14,14 +14,20 @@ use serde_json::json;
 
 use crate::StateRef;
 
-pub fn app(state: StateRef) -> Router {
+// TODO: make `base_path` optional.
+pub fn app(state: StateRef, base_path: &str) -> Router {
+    if !base_path.starts_with('/') || !base_path.ends_with('/') {
+        panic!("base_path must start and end with /");
+    }
+    let base_tag = format!(r#"<base href="{base_path}""#);
+
     Router::new()
         .route("/api/traces/:hex_id", get(trace))
         .route("/api/services", get(services))
         .route("/api/services/:service/operations", get(operations))
         .route("/api/traces", get(traces))
         .layer(Extension(state))
-        .fallback(static_handler)
+        .fallback(|uri| async move { static_handler(uri, &base_tag).await })
 }
 
 async fn trace(
@@ -87,14 +93,18 @@ const INDEX_HTML: &str = "index.html";
 #[folder = "jaeger-ui/build"]
 struct Assets;
 
-async fn static_handler(uri: Uri) -> Response {
+async fn static_handler(uri: Uri, base_tag: &str) -> Response {
     let path = uri.path().trim_start_matches('/');
 
-    match Assets::get(path) {
-        Some(content) => {
-            let mime = content.metadata.mimetype();
+    if path == INDEX_HTML {
+        return index_html(base_tag);
+    }
 
-            let mut res = content.data.into_response();
+    match Assets::get(path) {
+        Some(file) => {
+            let mime = file.metadata.mimetype();
+
+            let mut res = file.data.into_response();
             res.headers_mut()
                 .insert(header::CONTENT_TYPE, mime.parse().unwrap());
             res
@@ -108,15 +118,19 @@ async fn static_handler(uri: Uri) -> Response {
                 // Due to the frontend is a SPA (Single Page Application),
                 // it has own frontend routes, we should return the ROOT PAGE
                 // to avoid frontend route 404.
-                (StatusCode::TEMPORARY_REDIRECT, index_html()).into_response()
+                (StatusCode::TEMPORARY_REDIRECT, index_html(base_tag)).into_response()
             }
         }
     }
 }
 
-fn index_html() -> Response {
-    let content = Assets::get(INDEX_HTML).unwrap();
-    Html(content.data).into_response()
+fn index_html(base_tag: &str) -> Response {
+    let file = Assets::get(INDEX_HTML).unwrap();
+    let data = std::str::from_utf8(&file.data)
+        .unwrap()
+        .replace(r#"<base href="/""#, base_tag);
+
+    Html(data).into_response()
 }
 
 fn not_found() -> Response {
