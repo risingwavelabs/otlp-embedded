@@ -21,12 +21,16 @@ pub fn app(state: StateRef, base_path: &str) -> Router {
     }
     let base_tag = format!(r#"<base href="{base_path}""#);
 
-    Router::new()
-        .route("/api/traces/:hex_id", get(trace))
-        .route("/api/services", get(services))
-        .route("/api/services/:service/operations", get(operations))
-        .route("/api/traces", get(traces))
+    let api = Router::new()
+        .route("/traces/:hex_id", get(trace))
+        .route("/services", get(services))
+        .route("/services/:service/operations", get(operations))
+        .route("/traces", get(traces))
         .layer(Extension(state))
+        .fallback(|_: Uri| async move { not_found_with_msg("API not supported") });
+
+    Router::new()
+        .nest("/api/", api)
         .fallback(|uri| async move { static_handler(uri, &base_tag).await })
 }
 
@@ -141,8 +145,8 @@ async fn static_handler(uri: Uri, base_tag: &str) -> Response {
         }
 
         None => {
-            if path.starts_with("api") || path.starts_with("static") {
-                // For those routes, we simply return 404.
+            if path.starts_with("static") {
+                // For inexistent static assets, we simply return 404.
                 not_found()
             } else {
                 // Due to the frontend is a SPA (Single Page Application),
