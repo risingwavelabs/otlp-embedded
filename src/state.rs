@@ -1,5 +1,5 @@
 use std::{
-    collections::{hash_map::Entry, HashMap},
+    collections::{hash_map::Entry, BTreeSet, HashMap},
     sync::Arc,
     time::{Duration, SystemTime},
 };
@@ -23,6 +23,36 @@ type SpanId = Vec<u8>;
 pub struct Value {
     pub span: Span,
     pub resource: Arc<Resource>,
+}
+
+fn extract_string<'a>(attr: &'a [KeyValue], key: &'static str) -> &'a str {
+    attr.iter()
+        .find(|a| a.key == key)
+        .and_then(|kv| {
+            if let Some(AnyValue {
+                value: Some(any_value::Value::StringValue(str)),
+            }) = &kv.value
+            {
+                Some(str.as_str())
+            } else {
+                None
+            }
+        })
+        .unwrap_or("unknown")
+}
+
+impl Value {
+    pub fn service_name(&self) -> &str {
+        extract_string(&self.resource.attributes, "service.name")
+    }
+
+    pub fn service_instance_id(&self) -> &str {
+        extract_string(&self.resource.attributes, "service.instance.id")
+    }
+
+    pub fn operation(&self) -> &str {
+        self.span.name.as_str()
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -151,7 +181,7 @@ impl Trace {
         let entries = self
             .iter_valid()
             .map(|v| {
-                let process = JaegerProcess::from((*v.resource).clone());
+                let process = JaegerProcess::from(v);
                 let key = process.key.clone();
                 processes.insert(key.clone(), process);
 
@@ -170,6 +200,24 @@ impl Trace {
             "spans": entries,
             "processes": processes,
         })
+    }
+}
+
+impl Trace {
+    fn root_span(&self) -> Option<&Value> {
+        self.iter_valid().find(|v| v.span.parent_span_id.is_empty())
+    }
+
+    pub fn service_name(&self) -> Option<&str> {
+        self.root_span().map(|v| v.service_name())
+    }
+
+    pub fn service_instance_id(&self) -> Option<&str> {
+        self.root_span().map(|v| v.service_instance_id())
+    }
+
+    pub fn operation(&self) -> Option<&str> {
+        self.root_span().map(|v| v.operation())
     }
 }
 
@@ -217,16 +265,30 @@ impl State {
         self.traces.peek(id).cloned()
     }
 
-    pub fn get_all_complete(&self) -> Vec<Trace> {
+    pub fn get_all_complete(&self) -> impl Iterator<Item = Trace> + '_ {
+        self.traces.iter().filter_map(|(_, trace)| {
+            if trace.is_complete() {
+                Some(trace.clone())
+            } else {
+                None
+            }
+        })
+    }
+
+    pub fn get_all_services(&self) -> BTreeSet<&str> {
         self.traces
             .iter()
-            .filter_map(|(_, trace)| {
-                if trace.is_complete() {
-                    Some(trace.clone())
-                } else {
-                    None
-                }
-            })
+            .filter_map(|(_, t)| t.root_span())
+            .map(|v| v.service_name())
+            .collect()
+    }
+
+    pub fn get_operations(&self, service_name: &str) -> BTreeSet<&str> {
+        self.traces
+            .iter()
+            .filter_map(|(_, t)| t.root_span())
+            .filter(|v| v.service_name() == service_name)
+            .map(|v| v.operation())
             .collect()
     }
 }

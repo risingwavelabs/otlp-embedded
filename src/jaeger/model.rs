@@ -2,10 +2,12 @@
 
 use serde::Serialize;
 
-use crate::proto::{
-    common::v1::{any_value, AnyValue, KeyValue},
-    resource::v1::Resource,
-    trace::v1::Span,
+use crate::{
+    proto::{
+        common::v1::{any_value, AnyValue, KeyValue},
+        trace::v1::Span,
+    },
+    state::Value,
 };
 
 fn hex(bytes: &[u8]) -> String {
@@ -73,29 +75,15 @@ pub(crate) struct JaegerProcess {
     pub tags: Vec<JaegerKv>,
 }
 
-impl From<Resource> for JaegerProcess {
-    fn from(resource: Resource) -> Self {
-        let attr = resource.attributes;
-
-        let extract_string = |key: &str| {
-            attr.iter()
-                .find(|a| a.key == key)
-                .and_then(|kv| {
-                    if let Some(AnyValue {
-                        value: Some(any_value::Value::StringValue(str)),
-                    }) = &kv.value
-                    {
-                        Some(str.to_owned())
-                    } else {
-                        None
-                    }
-                })
-                .unwrap_or_else(|| "unknown".to_owned())
-        };
-
-        let key = extract_string("service.instance.id");
-        let service_name = extract_string("service.name");
-        let tags = attr.into_iter().map(JaegerKv::from).collect::<Vec<_>>();
+impl From<&Value> for JaegerProcess {
+    fn from(value: &Value) -> Self {
+        let key = value.service_instance_id().to_owned();
+        let service_name = value.service_name().to_owned();
+        let tags = (value.resource.attributes)
+            .iter()
+            .cloned()
+            .map(JaegerKv::from)
+            .collect::<Vec<_>>();
 
         Self {
             key,

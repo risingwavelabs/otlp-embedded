@@ -44,39 +44,69 @@ async fn trace(
     }
 }
 
-async fn services() -> impl IntoResponse {
-    let mock = json!({
-        "data": ["all"],
-        "total": 1,
+async fn services(Extension(state): Extension<StateRef>) -> impl IntoResponse {
+    let state = state.read().await;
+    let all_services = state.get_all_services();
+    let len = all_services.len();
+
+    let res = json!({
+        "data": all_services,
+        "total": len,
     });
 
-    Json(mock).into_response()
+    Json(res).into_response()
 }
 
-async fn operations() -> impl IntoResponse {
-    let mock = json!({
-        "data": [],
-        "total": 0,
+async fn operations(
+    Path(service): Path<String>,
+    Extension(state): Extension<StateRef>,
+) -> impl IntoResponse {
+    let state = state.read().await;
+    let operations = state.get_operations(&service);
+    let len = operations.len();
+
+    let res = json!({
+        "data": operations,
+        "total": len,
     });
 
-    Json(mock).into_response()
+    Json(res).into_response()
 }
 
 #[derive(Deserialize)]
 struct TracesQuery {
+    service: Option<String>,
+    operation: Option<String>,
     limit: usize,
 }
 
 async fn traces(
-    Query(query): Query<TracesQuery>,
+    Query(TracesQuery {
+        service,
+        operation,
+        limit,
+    }): Query<TracesQuery>,
     Extension(state): Extension<StateRef>,
 ) -> impl IntoResponse {
     let traces = (state.read().await)
         .get_all_complete()
-        .into_iter()
+        .filter(|t| {
+            if let Some(service) = &service {
+                t.service_name().unwrap() == service
+            } else {
+                true
+            }
+        })
+        .filter(|t| {
+            if let Some(operation) = &operation {
+                t.operation().unwrap() == operation
+            } else {
+                true
+            }
+        })
         .sorted_by_cached_key(|t| Reverse(t.end_time))
         .map(|t| t.to_jaeger_entry())
-        .take(query.limit)
+        .take(limit)
         .collect_vec();
 
     let mock = json!({
