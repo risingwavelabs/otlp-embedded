@@ -42,7 +42,7 @@ async fn trace(
     let trace = state.read().await.get_by_id(&id);
 
     if let Some(trace) = trace {
-        Json(trace.to_jaeger()).into_response()
+        Json(trace.to_jaeger_batch()).into_response()
     } else {
         not_found_with_msg(format!("Trace {hex_id} not found, maybe expired."))
     }
@@ -109,7 +109,7 @@ async fn traces(
             }
         })
         .sorted_by_cached_key(|t| Reverse(t.end_time))
-        .map(|t| t.to_jaeger_entry())
+        .map(|t| t.to_jaeger())
         .take(limit)
         .collect_vec();
 

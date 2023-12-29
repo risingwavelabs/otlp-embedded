@@ -149,7 +149,7 @@ impl Trace {
         hex::encode(bytes)
     }
 
-    pub fn to_tempo(&self) -> serde_json::Value {
+    pub fn to_tempo_batch(&self) -> serde_json::Value {
         let entries = self
             .iter_valid()
             .map(|v| {
@@ -167,15 +167,15 @@ impl Trace {
         })
     }
 
-    pub fn to_jaeger(&self) -> serde_json::Value {
+    pub fn to_jaeger_batch(&self) -> serde_json::Value {
         json!({
             "data": [
-                self.to_jaeger_entry()
+                self.to_jaeger()
             ]
         })
     }
 
-    pub fn to_jaeger_entry(&self) -> serde_json::Value {
+    pub fn to_jaeger(&self) -> serde_json::Value {
         let mut processes = HashMap::new();
 
         let entries = self
@@ -228,9 +228,9 @@ pub struct State {
 pub type StateRef = Arc<RwLock<State>>;
 
 impl State {
-    pub fn new() -> StateRef {
+    pub fn new(recent: u32) -> StateRef {
         let this = Self {
-            traces: LruMap::new(ByLength::new(100)),
+            traces: LruMap::new(ByLength::new(recent)),
         };
 
         Arc::new(RwLock::new(this))

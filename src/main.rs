@@ -2,7 +2,7 @@ use otlp_embedded::{jaeger_ui_app, State, TraceServiceImpl, TraceServiceServer};
 
 #[tokio::main]
 async fn main() {
-    let state = State::new();
+    let state = State::new(100);
     let state_clone = state.clone();
 
     tokio::spawn(async {
