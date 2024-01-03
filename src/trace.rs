@@ -142,10 +142,14 @@ impl Trace {
         self.spans.values().all(|v| matches!(v, SpanNode::Value(_)))
     }
 
+    /// Get the trace ID.
+    pub fn id(&self) -> &[u8] {
+        &self.iter_valid().next().unwrap().span.trace_id
+    }
+
     /// Get the trace ID as a hex string.
     pub fn hex_id(&self) -> String {
-        let bytes = &self.iter_valid().next().unwrap().span.trace_id;
-        hex::encode(bytes)
+        hex::encode(self.id())
     }
 
     /// Convert the trace into a JSON value that can be directly imported into Grafana Tempo
@@ -211,21 +215,21 @@ impl Trace {
         self.iter_valid().find(|v| v.span.parent_span_id.is_empty())
     }
 
-    /// Get the service name of this trace.
+    /// Get the service name of the root span in this trace.
     ///
     /// Returns `None` if the trace is not complete and the root span is not received.
     pub fn service_name(&self) -> Option<&str> {
         self.root_span().map(|v| v.service_name())
     }
 
-    /// Get the service instance ID of this trace.
+    /// Get the service instance ID of the root span in this trace.
     ///
     /// Returns `None` if the trace is not complete and the root span is not received.
     pub fn service_instance_id(&self) -> Option<&str> {
         self.root_span().map(|v| v.service_instance_id())
     }
 
-    /// Get the operation (root span) name of this trace.
+    /// Get the operation (span name) of the root span in this trace.
     ///
     /// Returns `None` if the trace is not complete and the root span is not received.
     pub fn operation(&self) -> Option<&str> {

@@ -1,5 +1,6 @@
-#![allow(non_snake_case)]
 #![allow(clippy::all)]
+#![allow(missing_docs)]
+#![allow(rustdoc::all)]
 
 mod opentelemetry {
     pub mod proto {

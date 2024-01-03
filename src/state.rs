@@ -61,7 +61,7 @@ impl State {
     }
 
     /// Get an iterator over all traces that are complete.
-    pub(crate) fn get_all_complete(&self) -> impl Iterator<Item = Trace> + '_ {
+    pub fn get_all_complete(&self) -> impl Iterator<Item = Trace> + '_ {
         self.traces.iter().filter_map(|(_, trace)| {
             if trace.is_complete() {
                 Some(trace.clone())
@@ -72,7 +72,7 @@ impl State {
     }
 
     /// Get a set of all services.
-    pub(crate) fn get_all_services(&self) -> BTreeSet<&str> {
+    pub fn get_all_services(&self) -> BTreeSet<&str> {
         self.traces
             .iter()
             .filter_map(|(_, t)| t.root_span())
@@ -81,7 +81,7 @@ impl State {
     }
 
     /// Get a set of all operations for the given service.
-    pub(crate) fn get_operations(&self, service_name: &str) -> BTreeSet<&str> {
+    pub fn get_operations(&self, service_name: &str) -> BTreeSet<&str> {
         self.traces
             .iter()
             .filter_map(|(_, t)| t.root_span())
