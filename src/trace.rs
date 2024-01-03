@@ -9,6 +9,7 @@ use crate::proto::{
     resource::v1::Resource,
     trace::v1::Span,
 };
+use datasize::DataSize;
 use itertools::Itertools;
 use serde_json::json;
 
@@ -17,7 +18,7 @@ use crate::jaeger::model::{span_to_jaeger_json, JaegerProcess};
 pub(crate) type TraceId = Vec<u8>;
 pub(crate) type SpanId = Vec<u8>;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, DataSize)]
 pub(crate) struct SpanValue {
     pub span: Span,
     pub resource: Arc<Resource>,
@@ -53,14 +54,15 @@ impl SpanValue {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, DataSize)]
 pub(crate) enum SpanNode {
     Placeholder,
     Value(SpanValue),
 }
 
 /// A trace that consists of multiple spans in a tree structure.
-#[derive(Debug, Clone)]
+// TODO: should we cache the size?
+#[derive(Debug, Clone, DataSize)]
 pub struct Trace {
     pub(crate) spans: HashMap<SpanId, SpanNode>,
     pub(crate) end_time: SystemTime,

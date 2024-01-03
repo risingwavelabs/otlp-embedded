@@ -1,38 +1,60 @@
 use std::{collections::BTreeSet, sync::Arc};
 
 use crate::{
+    limiter::MyLimiter,
     proto::trace::v1::ResourceSpans,
     trace::{SpanValue, Trace, TraceId},
 };
-use schnellru::{ByLength, LruMap};
+use schnellru::LruMap;
 use tokio::sync::RwLock;
+
+/// Configuration for the [`State`].
+///
+/// Either the maximum number of traces or the maximum memory usage
+/// is reached, the oldest traces will be evicted.
+pub struct Config {
+    /// The maximum number of traces to keep.
+    pub max_length: u32,
+
+    /// The maximum memory usage of the traces in bytes.
+    ///
+    /// The memory usage is estimated and the actual value may be higher.
+    pub max_memory_usage: usize,
+}
 
 /// In-memory state that maintains the most recent traces.
 ///
 /// Old traces that are no longer updated or accessed will be evicted
 /// when the capacity is reached.
 pub struct State {
-    traces: LruMap<TraceId, Trace>,
+    traces: LruMap<TraceId, Trace, MyLimiter>,
 }
 
 /// A reference to the [`State`].
 pub type StateRef = Arc<RwLock<State>>;
 
 impl State {
-    /// Create a new [`State`] with the given number of recent traces to keep.
-    pub fn new(recent: u32) -> StateRef {
+    /// Create a new [`State`] with the given configuration.
+    pub fn new(
+        Config {
+            max_length,
+            max_memory_usage,
+        }: Config,
+    ) -> StateRef {
         let this = Self {
-            traces: LruMap::new(ByLength::new(recent)),
+            traces: LruMap::new(MyLimiter::new(max_memory_usage, max_length)),
         };
 
         Arc::new(RwLock::new(this))
     }
 
     fn add_value(&mut self, value: SpanValue) {
-        self.traces
-            .get_or_insert(value.span.trace_id.clone(), Default::default)
-            .unwrap()
-            .add_value(value);
+        // Use a pair of `remove` and `insert` to maintain the memory usage correctly.
+        let mut trace = self.traces.remove(&value.span.trace_id).unwrap_or_default();
+        let id = value.span.trace_id.clone();
+        trace.add_value(value);
+
+        self.traces.insert(id, trace);
     }
 
     pub(crate) fn apply(&mut self, resource_spans: ResourceSpans) {
@@ -51,6 +73,17 @@ impl State {
             };
             self.add_value(value);
         }
+    }
+
+    /// Get the number of traces in the state.
+    #[allow(clippy::len_without_is_empty)]
+    pub fn len(&self) -> usize {
+        self.traces.len()
+    }
+
+    /// Get the estimated memory usage of the state in bytes.
+    pub fn estimated_memory_usage(&self) -> usize {
+        self.traces.limiter().estimated_memory_usage()
     }
 
     /// Get a trace by its ID.

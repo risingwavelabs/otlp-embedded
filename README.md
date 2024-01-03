@@ -11,7 +11,10 @@ use otlp_embedded::{ui_app, State, TraceServiceImpl, TraceServiceServer};
 
 #[tokio::main]
 async fn main() {
-    let state = State::new(100);
+    let state = State::new(Config {
+        max_length: 100,
+        max_memory_usage: 1 << 27, // 128 MiB
+    });
     let state_clone = state.clone();
 
     tokio::spawn(async {

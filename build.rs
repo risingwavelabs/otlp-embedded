@@ -1,5 +1,5 @@
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let derive_serde = "#[derive(serde::Serialize, serde::Deserialize)]";
+    let derive_serde = "#[derive(serde::Serialize, serde::Deserialize, datasize::DataSize)]";
 
     tonic_build::configure()
         .message_attribute(".", derive_serde)
