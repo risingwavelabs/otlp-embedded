@@ -15,6 +15,16 @@ use serde_json::json;
 use crate::StateRef;
 
 // TODO: make `base_path` optional.
+/// Create a new [`axum::Router`] for the Jaeger UI to visualize the traces
+/// stored in the given [`StateRef`].
+///
+/// The `base_path` is used for the application to load static assets correctly.
+/// It should start and end with `/`. For example,
+///
+/// - if the application is served at `http://localhost:3000/`, then `base_path`
+///   should be `/`.
+/// - if the application is served at `http://localhost:3000/trace/`, then
+///   `base_path` should be `/trace/`.
 pub fn app(state: StateRef, base_path: &str) -> Router {
     if !base_path.starts_with('/') || !base_path.ends_with('/') {
         panic!("base_path must start and end with /");
@@ -39,7 +49,7 @@ async fn trace(
     Extension(state): Extension<StateRef>,
 ) -> impl IntoResponse {
     let id = hex::decode(&hex_id).unwrap_or_default();
-    let trace = state.read().await.get_by_id(&id);
+    let trace = state.write().await.get_by_id(&id);
 
     if let Some(trace) = trace {
         Json(trace.to_jaeger_batch()).into_response()

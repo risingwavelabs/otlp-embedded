@@ -7,7 +7,7 @@ use crate::{
         common::v1::{any_value, AnyValue, KeyValue},
         trace::v1::Span,
     },
-    state::Value,
+    trace::SpanValue,
 };
 
 fn hex(bytes: &[u8]) -> String {
@@ -75,8 +75,8 @@ pub(crate) struct JaegerProcess {
     pub tags: Vec<JaegerKv>,
 }
 
-impl From<&Value> for JaegerProcess {
-    fn from(value: &Value) -> Self {
+impl From<&SpanValue> for JaegerProcess {
+    fn from(value: &SpanValue) -> Self {
         let key = value.service_instance_id().to_owned();
         let service_name = value.service_name().to_owned();
         let tags = (value.resource.attributes)

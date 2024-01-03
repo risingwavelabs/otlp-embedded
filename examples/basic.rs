@@ -1,4 +1,4 @@
-use otlp_embedded::{jaeger_ui_app, State, TraceServiceImpl, TraceServiceServer};
+use otlp_embedded::{ui_app, State, TraceServiceImpl, TraceServiceServer};
 
 #[tokio::main]
 async fn main() {
@@ -7,7 +7,7 @@ async fn main() {
 
     tokio::spawn(async {
         axum::Server::bind(&"0.0.0.0:10188".parse().unwrap())
-            .serve(jaeger_ui_app(state, "/").into_make_service())
+            .serve(ui_app(state, "/").into_make_service())
             .await
             .unwrap();
     });

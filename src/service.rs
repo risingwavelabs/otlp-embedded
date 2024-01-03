@@ -5,11 +5,13 @@ use tonic::{Request, Response, Status};
 
 use crate::State;
 
+/// The implementation of [`TraceService`].
 pub struct TraceServiceImpl {
     state: Arc<RwLock<State>>,
 }
 
 impl TraceServiceImpl {
+    /// Create a new [`TraceServiceImpl`] with the given [`State`] reference.
     pub fn new(state: Arc<RwLock<State>>) -> Self {
         Self { state }
     }
