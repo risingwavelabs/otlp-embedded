@@ -10,7 +10,7 @@ categories = ["development-tools::debugging"]
 license = "Apache-2.0"
 
 [dependencies]
-axum = "0.6"
+axum = "0.7"
 datasize = { git = "https://github.com/BugenZhao/datasize-rs", rev = "8192cf2d751119a6a30e2ef67e5eb252f8e5b3e5" }
 hex = "0.4"
 itertools = "0.12"

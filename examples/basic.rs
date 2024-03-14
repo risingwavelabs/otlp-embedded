@@ -10,10 +10,14 @@ async fn main() {
     let state_clone_2 = state.clone();
 
     tokio::spawn(async {
-        axum::Server::bind(&"0.0.0.0:10188".parse().unwrap())
-            .serve(ui_app(state, "/").into_make_service())
-            .await
-            .unwrap();
+        axum::serve(
+            tokio::net::TcpListener::bind("0.0.0.0:10188")
+                .await
+                .unwrap(),
+            ui_app(state, "/"),
+        )
+        .await
+        .unwrap();
     });
 
     tokio::spawn(async move {
