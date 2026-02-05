@@ -20,7 +20,7 @@ pub(crate) type SpanId = Vec<u8>;
 
 #[derive(Debug, Clone, DataSize)]
 pub(crate) struct SpanValue {
-    pub span: Span,
+    pub span: Box<Span>,
     pub resource: Arc<Resource>,
 }
 
@@ -194,7 +194,7 @@ impl Trace {
                 let key = process.key.clone();
                 processes.insert(key.clone(), process);
 
-                span_to_jaeger_json(v.span.clone(), key)
+                span_to_jaeger_json(*v.span.clone(), key)
             })
             .collect_vec();
 

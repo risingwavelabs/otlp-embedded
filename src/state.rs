@@ -68,7 +68,7 @@ impl State {
 
         for span in scope_spans.into_iter().flat_map(|s| s.spans) {
             let value = SpanValue {
-                span,
+                span: Box::new(span),
                 resource: resource.clone(),
             };
             self.add_value(value);
