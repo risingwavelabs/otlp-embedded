@@ -32,9 +32,9 @@ pub fn app(state: StateRef, base_path: &str) -> Router {
     let base_tag = format!(r#"<base href="{base_path}""#);
 
     let api = Router::new()
-        .route("/traces/:hex_id", get(trace))
+        .route("/traces/{hex_id}", get(trace))
         .route("/services", get(services))
-        .route("/services/:service/operations", get(operations))
+        .route("/services/{service}/operations", get(operations))
         .route("/traces", get(traces))
         .layer(Extension(state))
         .fallback(|_: Uri| async move { not_found_with_msg("API not supported") });
