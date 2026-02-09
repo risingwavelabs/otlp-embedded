@@ -11,7 +11,7 @@ license = "Apache-2.0"
 
 [dependencies]
 axum = "0.8"
-datasize = { git = "https://github.com/BugenZhao/datasize-rs", rev = "8192cf2d751119a6a30e2ef67e5eb252f8e5b3e5" }
+get-size2 = { version = "0.7", features = ["derive"] }
 hex = "0.4"
 itertools = "0.14"
 prost = "0.14"

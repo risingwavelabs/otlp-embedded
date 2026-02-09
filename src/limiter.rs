@@ -1,4 +1,4 @@
-use datasize::DataSize;
+use get_size2::GetSize;
 use schnellru::Limiter;
 
 /// Limit both the number of elements and the memory usage of the map.
@@ -25,8 +25,8 @@ impl MyLimiter {
 
 impl<K, V> Limiter<K, V> for MyLimiter
 where
-    K: DataSize,
-    V: DataSize,
+    K: GetSize,
+    V: GetSize,
 {
     type KeyToInsert<'a> = K;
     type LinkType = u32;
@@ -44,7 +44,7 @@ where
         if self.max_length > 0 {
             // Do not reject new inserts due to memory usage.
             // Instead, evict the oldest entry by telling `is_over_the_limit`.
-            let mem = K::estimate_heap_size(&key) + V::estimate_heap_size(&value);
+            let mem = key.get_heap_size() + value.get_heap_size();
             self.current_mem += mem;
 
             Some((key, value))
@@ -66,7 +66,7 @@ where
     }
 
     fn on_removed(&mut self, key: &mut K, value: &mut V) {
-        let mem = K::estimate_heap_size(&*key) + V::estimate_heap_size(value);
+        let mem = key.get_heap_size() + value.get_heap_size();
         self.current_mem -= mem;
     }
 
