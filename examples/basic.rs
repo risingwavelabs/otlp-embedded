@@ -1,4 +1,4 @@
-use otlp_embedded::{ui_app, Config, State, TraceServiceImpl, TraceServiceServer};
+use otlp_embedded::{Config, State, TraceServiceImpl, TraceServiceServer, ui_app};
 
 #[tokio::main]
 async fn main() {
@@ -20,13 +20,26 @@ async fn main() {
         .unwrap();
     });
 
+    println!("Open http://localhost:10188/ to view the UI.");
+    println!("Send traces to http://localhost:43177/v1/trace.");
+
     tokio::spawn(async move {
         let mut interval = tokio::time::interval(std::time::Duration::from_secs(1));
+        let mut last_len = 0;
+        let mut last_mem = 0;
+
         loop {
             interval.tick().await;
             let state = state_clone_2.read().await;
-            println!("Len: {}", state.len());
-            println!("Estimated memory usage: {}", state.estimated_memory_usage());
+            let len = state.len();
+            let mem = state.estimated_memory_usage();
+
+            if len != last_len || mem != last_mem {
+                println!("Len: {}", len);
+                println!("Estimated memory usage: {}", mem);
+            }
+            last_len = len;
+            last_mem = mem;
         }
     });
 

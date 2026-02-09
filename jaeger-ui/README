@@ -1,4 +1,10 @@
 The UI assets under this directory are vendorized from the
-production build of the Jaeger UI 1.36.0 release.
+production build of the Jaeger UI 2.14.1 release.
 
-https://github.com/jaegertracing/jaeger-ui/releases/tag/v1.36.0
+https://github.com/jaegertracing/jaeger-ui/releases/tag/v2.14.1
+
+Why not 2.15+:
+
+Jaeger UI 2.15+ started using `/api/v3/*` for parts of trace discovery (e.g.
+services and operations). This project currently implements a minimal legacy
+`/api/*` compatibility layer, so upgrading to 2.15+ may break those flows.
