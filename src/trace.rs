@@ -1,11 +1,11 @@
 use std::{
-    collections::{hash_map::Entry, HashMap},
+    collections::{HashMap, hash_map::Entry},
     sync::Arc,
     time::{Duration, SystemTime},
 };
 
 use crate::proto::{
-    common::v1::{any_value, AnyValue, KeyValue},
+    common::v1::{AnyValue, KeyValue, any_value},
     resource::v1::Resource,
     trace::v1::Span,
 };
@@ -13,7 +13,7 @@ use get_size2::GetSize;
 use itertools::Itertools;
 use serde_json::json;
 
-use crate::jaeger::model::{span_to_jaeger_json, JaegerProcess};
+use crate::jaeger::model::{JaegerProcess, span_to_jaeger_json};
 
 pub(crate) type TraceId = Vec<u8>;
 pub(crate) type SpanId = Vec<u8>;

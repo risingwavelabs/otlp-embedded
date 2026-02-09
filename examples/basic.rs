@@ -1,3 +1,12 @@
+//! Basic end-to-end example.
+//!
+//! This example starts:
+//! - Jaeger-compatible UI on `http://localhost:10188/`
+//! - OTLP gRPC trace ingestion service on `0.0.0.0:43177`
+//!
+//! Use this when you want to send real spans from an external client and
+//! visualize them in the embedded UI.
+
 use otlp_embedded::{Config, State, TraceServiceImpl, TraceServiceServer, ui_app};
 
 #[tokio::main]

@@ -1,11 +1,11 @@
 use std::cmp::Reverse;
 
 use axum::{
+    Extension, Json, Router,
     extract::{Path, Query},
-    http::{header, StatusCode, Uri},
+    http::{StatusCode, Uri, header},
     response::{Html, IntoResponse, Response},
     routing::get,
-    Extension, Json, Router,
 };
 use itertools::Itertools;
 use rust_embed::RustEmbed;

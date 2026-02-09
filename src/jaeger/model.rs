@@ -4,7 +4,7 @@ use serde::Serialize;
 
 use crate::{
     proto::{
-        common::v1::{any_value, AnyValue, KeyValue},
+        common::v1::{AnyValue, KeyValue, any_value},
         trace::v1::Span,
     },
     trace::SpanValue,
