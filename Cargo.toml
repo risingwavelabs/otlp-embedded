@@ -1,7 +1,7 @@
 [package]
 name = "otlp-embedded"
 description = "In-memory OpenTelemetry trace collector and Web UI visualizer."
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 authors = ["Bugen Zhao <i@bugenzhao.com>"]
 repository = "https://github.com/risingwavelabs/otlp-embedded"
